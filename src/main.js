@@ -6,8 +6,14 @@ import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import axios from 'axios'
+import * as VueGoogleMaps from 'vue2-google-maps'
 
 Vue.use(Vuetify, axios)
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyBPovR1Mt1Jz9BffG_Snz790ljYBL-fADw',
+  }
+})
 
 Vue.config.productionTip = false
 

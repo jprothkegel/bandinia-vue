@@ -27,7 +27,6 @@ export default {
             let i = 0
             this.names = Object.keys(response.data.modular_content)
             for(i=0;i<this.names.length;i++){
-                console.log(response.data.modular_content[this.names[i]].elements.profile_name.value.split('<p>'))
                 this.items.push({
                     name: response.data.modular_content[this.names[i]].elements.profile_name.value.slice(3,-4),
                     description: response.data.modular_content[this.names[i]].elements.profile_description.value.slice(3,-4),
