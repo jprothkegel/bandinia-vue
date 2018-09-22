@@ -6,6 +6,7 @@
       fixed
       app
       temporary
+      right
     >
       <v-list dense>
         <v-subheader>Menú</v-subheader>
@@ -53,49 +54,45 @@
     </v-navigation-drawer>
     
     <v-toolbar
-      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      :clipped-right="$vuetify.breakpoint.lgAndUp"
       color="green darken-4"
       dark
       app
       fixed
     >
       <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
-        <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
-        <v-btn icon large>
-        <v-avatar size="32px" tile>
+        <v-avatar size="70px" tile class="pt-2" >
           <img
-            src="./assets/wappenblanco.png"
+            src="./assets/Wappen-2.png"
             alt="Vuetify"
           >
         </v-avatar>
-      </v-btn>
+        <v-btn small flat round>Burschenschaft Andinia</v-btn>
       </v-toolbar-title>
       
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn depressed small flat round>
+        <v-btn small flat round>
           Quienes Somos
         </v-btn>
-        <v-btn depressed small flat round>
+        <v-btn small flat round>
           Historia
         </v-btn>
-        <v-btn depressed small flat round>
+        <v-btn small flat round>
           Nuestro Hogar
         </v-btn>
-        <v-btn depressed small flat round>
+        <v-btn small flat round>
           Activos
         </v-btn>
-        <v-btn depressed small flat round>
+        <v-btn small flat round>
           Galeria
         </v-btn>
       </v-toolbar-items>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
 
     </v-toolbar>
-    <v-content>
-      <v-container fluid fill-height>
-        <router-view></router-view>
-      </v-container>
-    </v-content>
+
+    <router-view></router-view>
 
     <v-footer
     dark
@@ -163,39 +160,7 @@
 export default {
       data: () => ({
       dialog: false,
-      drawer: null,
-      items: [
-        { icon: 'contacts', text: 'Contacts' },
-        { icon: 'history', text: 'Frequently contacted' },
-        { icon: 'content_copy', text: 'Duplicates' },
-        {
-          icon: 'keyboard_arrow_up',
-          'icon-alt': 'keyboard_arrow_down',
-          text: 'Labels',
-          model: true,
-          children: [
-            { icon: 'add', text: 'Create label' }
-          ]
-        },
-        {
-          icon: 'keyboard_arrow_up',
-          'icon-alt': 'keyboard_arrow_down',
-          text: 'More',
-          model: false,
-          children: [
-            { text: 'Import' },
-            { text: 'Export' },
-            { text: 'Print' },
-            { text: 'Undo changes' },
-            { text: 'Other contacts' }
-          ]
-        },
-        { icon: 'settings', text: 'Settings' },
-        { icon: 'chat_bubble', text: 'Send feedback' },
-        { icon: 'help', text: 'Help' },
-        { icon: 'phonelink', text: 'App downloads' },
-        { icon: 'keyboard', text: 'Go to the old version' }
-      ]
+      drawer: null
     }),
   name: 'App'
 }
