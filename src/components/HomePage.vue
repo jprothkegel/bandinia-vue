@@ -2,7 +2,7 @@
     <v-content>
         <v-parallax
             dark
-            src='https://assets-us-01.kc-usercontent.com:443/c966dec3-e768-00a1-84e8-f18a647729b5/89dfe21d-e158-4ed3-ad44-6a57e049ddc9/Andinia.png'
+            :src="require('../assets/Andinia.png')"
             height="770"
         >
             <v-layout
@@ -10,8 +10,8 @@
             column
             justify-center
             >
-            <h1 class="display-2 font-weight-thin mb-3">{{this.headline}} </h1>
-            <h4 class="subheading">{{this.body_text}} </h4>
+            <h1 class="display-3 font-weight-thin mb-3">{{this.headline}} </h1>
+            <h4 class="headline">{{this.body_text}} </h4>
             </v-layout>
         </v-parallax>
 
@@ -31,7 +31,7 @@
                       <v-icon x-large class="blue--text text--lighten-2">color_lens</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
-                      <div class="headline text-xs-center">Material Design</div>
+                      <div class="headline text-xs-center">¿Qué somos?</div>
                     </v-card-title>
                     <v-card-text>
                       Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. 
@@ -46,7 +46,7 @@
                       <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
-                      <div class="headline">Fast development</div>
+                      <div class="headline">¿Qué hacemos?</div>
                     </v-card-title>
                     <v-card-text>
                       Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. 

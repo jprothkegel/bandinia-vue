@@ -10,43 +10,33 @@
     >
       <v-list dense>
         <v-subheader>Menú</v-subheader>
-        <v-list-tile>
+        <v-list-tile :to="{name:'QuienesSomos'}">
           <v-list-tile-content>
-            <v-btn depressed small flat round>
-              Quienes Somos
-            </v-btn>
+            Quienes Somos
           </v-list-tile-content>
         </v-list-tile>
 
         <v-list-tile>
           <v-list-tile-content>
-            <v-btn depressed small flat round>
-              Historia
-            </v-btn>
+            Historia
           </v-list-tile-content>
         </v-list-tile>
         
       <v-list-tile>
           <v-list-tile-content>
-            <v-btn depressed small flat round>
-              Nuestro Hogar
-            </v-btn>
+            Nuestro Hogar
           </v-list-tile-content>
         </v-list-tile>
 
       <v-list-tile>
           <v-list-tile-content>
-            <v-btn depressed small flat round>
-              Activos
-            </v-btn>
+            Activos
           </v-list-tile-content>
         </v-list-tile>
 
       <v-list-tile>
           <v-list-tile-content>
-            <v-btn depressed small flat round>
-              Galeria
-            </v-btn>
+            Galeria
           </v-list-tile-content>
         </v-list-tile>
 
@@ -67,24 +57,24 @@
             alt="Vuetify"
           >
         </v-avatar>
-        <v-btn small flat round>Burschenschaft Andinia</v-btn>
+        <v-btn to="/" active-class small flat>Burschenschaft Andinia</v-btn>
       </v-toolbar-title>
       
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn small flat round>
+        <v-btn to="/qs" active-class small flat>
           Quienes Somos
         </v-btn>
-        <v-btn small flat round>
+        <v-btn small flat>
           Historia
         </v-btn>
-        <v-btn small flat round>
+        <v-btn small flat>
           Nuestro Hogar
         </v-btn>
-        <v-btn small flat round>
+        <v-btn small flat>
           Activos
         </v-btn>
-        <v-btn small flat round>
+        <v-btn small flat>
           Galeria
         </v-btn>
       </v-toolbar-items>
@@ -92,7 +82,9 @@
 
     </v-toolbar>
 
-    <router-view></router-view>
+    <v-layout>
+      <router-view></router-view>
+    </v-layout>
 
     <v-footer
     dark

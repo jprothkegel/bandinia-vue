@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Aktiven from '@/components/Aktiven'
 import HomePage from '@/components/HomePage'
+import QuienesSomos from '@/components/QuienesSomos'
 
 Vue.use(Router)
 
@@ -10,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'HomePage',
+      component: HomePage
     },
     {
       path: '/aktiven',
@@ -19,9 +20,9 @@ export default new Router({
       component: Aktiven
     },
     {
-      path: '/inicio',
-      name: 'HomePage',
-      component: HomePage
+      path: '/qs',
+      name: 'QuienesSomos',
+      component: QuienesSomos
     }
   ],
   mode: 'history'
