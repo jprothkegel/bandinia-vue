@@ -15,6 +15,9 @@ Vue.use(VueGoogleMaps, {
   }
 })
 
+export const axiosConfig = axios.create({
+  baseURL:'https://deliver.kenticocloud.com/8ea21de5-9b35-00db-c1c1-52597ac64a72/items'
+})
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

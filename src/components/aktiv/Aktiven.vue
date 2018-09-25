@@ -14,15 +14,14 @@
 </template>
 
 <script>
+import {axiosConfig} from '../../main.js'
 import AktivCard from '@/components/aktiv/AktivCard'
-import axios from 'axios'
-
 export default {
     data:() => ({
         items: []
     }),
     created() {
-        axios.get('https://deliver.kenticocloud.com/c966dec3-e768-00a1-84e8-f18a647729b5/items/profile_test')
+        axiosConfig.get('/profile_test')
         .then(response => {
             let i = 0
             this.names = Object.keys(response.data.modular_content)
