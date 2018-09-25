@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import AktivCard from '@/components/AktivCard'
+import AktivCard from '@/components/aktiv/AktivCard'
 import axios from 'axios'
 
 export default {

@@ -16,19 +16,19 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile>
+        <v-list-tile :to="{name:'Historias'}">
           <v-list-tile-content>
             Historia
           </v-list-tile-content>
         </v-list-tile>
         
-      <v-list-tile>
+      <v-list-tile :to="{name:'Hogar'}">
           <v-list-tile-content>
             Nuestro Hogar
           </v-list-tile-content>
         </v-list-tile>
 
-      <v-list-tile>
+      <v-list-tile :to="{name:'Aktiven'}">
           <v-list-tile-content>
             Activos
           </v-list-tile-content>
@@ -65,13 +65,13 @@
         <v-btn to="/qs" active-class small flat>
           Quienes Somos
         </v-btn>
-        <v-btn small flat>
+        <v-btn to="/historia" active-class small flat>
           Historia
         </v-btn>
-        <v-btn small flat>
+        <v-btn to="/hogar" active-class small flat>
           Nuestro Hogar
         </v-btn>
-        <v-btn small flat>
+        <v-btn to="/aktiven" active-class small flat>
           Activos
         </v-btn>
         <v-btn small flat>
@@ -82,9 +82,9 @@
 
     </v-toolbar>
 
-    <v-layout>
+    <v-content>
       <router-view></router-view>
-    </v-layout>
+    </v-content>
 
     <v-footer
     dark

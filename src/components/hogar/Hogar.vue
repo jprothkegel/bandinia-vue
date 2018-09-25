@@ -1,6 +1,5 @@
 <template>
-    <v-content>
-
+    <v-flex>
         <v-layout
         column
         wrap
@@ -13,7 +12,7 @@
                         <v-flex xs12>
                             <v-card class="elevation-0 transparent">
                                 <v-card-title primary-title class="layout justify-center">
-                                <div class="headline text-xs-center">Burschenschaft Andinia</div>
+                                <div class="headline text-xs-center">Nuestro Hogar</div>
                                 </v-card-title>
                                 <v-card-text>
                                     Somos un grupo de estudiantes ex-alumnos de colegios alemanes, que vivimos
@@ -41,42 +40,35 @@
             </v-flex>
         </v-layout>
 
-        <v-parallax 
-        :src="require('../assets/qs1.jpeg')"
-        >
-            <v-layout
-            align-center
-            column
-            justify-center
-            >
-            </v-layout>
-        </v-parallax>
-
-        <v-layout
-        column
-        wrap
-        class="my-5"
-        align-center
-        >
-            <v-flex xs12>
-                <v-container grid-list-xl>
-                    <v-layout row wrap align-center>
-                        <v-flex xs12>
-                            <v-card class="elevation-0 transparent">
-                                <v-card-text>
-                                    ¿Cuáles son los requisitos para postular? Sólo debes saber hablar alemán 
-                                    y tener un vivo interés en mantener el idioma y la cultura alemana.
-                                </v-card-text>
-                                <v-card-text>
-                                    ¿Cómo postular? Debes enviar un e-mail a andiniachile@gmail.com, en el cual te 
-                                    presentes y expliques tus motivaciones para formar parte de la Burschenschaft Andinia.
-                                </v-card-text>
-                            </v-card>
-                            </v-flex>
-                    </v-layout>
-                </v-container>
-            </v-flex>
-        </v-layout>
-        
-    </v-content>
+        <v-carousel>
+            <v-carousel-item
+            v-for="(item,i) in items"
+            :key="i"
+            :src="item.src"
+            ></v-carousel-item>
+        </v-carousel>
+    </v-flex>
 </template>
+
+<script>
+  export default {
+    data () {
+      return {
+        items: [
+          {
+            src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+          },
+          {
+            src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
+          },
+          {
+            src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
+          },
+          {
+            src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
+          }
+        ]
+      }
+    }
+  }
+</script>

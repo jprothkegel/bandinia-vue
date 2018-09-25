@@ -1,8 +1,8 @@
 <template>
-    <v-content>
+    <v-flex>
         <v-parallax
             dark
-            :src="require('../assets/Andinia.png')"
+            :src="require('../../assets/Andinia.png')"
             height="770"
         >
             <v-layout
@@ -74,12 +74,7 @@
             </v-container>
           </v-flex>
         </v-layout>
-
-
-
-    </v-content>
-
-    
+    </v-flex>
 </template>
 
 <script>
