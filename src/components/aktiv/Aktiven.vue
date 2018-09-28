@@ -1,12 +1,40 @@
 <template>
     <v-container fluid grid-list-md style="min-heigth:0">
-        <h3 class="headline mb-0 centeredText">Burschen</h3>
+        <h3 class="headline mb-0 centeredText">Vorstand</h3>
+        <v-divider></v-divider>
         <v-layout row wrap>
-            <v-flex v-for='item in items' :key='item.id' xs12 md3>
+            <v-flex v-for='item in vorstand' :key='item.id' xs12 md3>
                 <aktiv-card
                     :name = 'item.name'
-                    :description = 'item.description'
-                    :image = 'item.image'
+                    :description = 'item.desc'
+                    :image = 'item.picture'
+                    :title = 'item.title'
+                ></aktiv-card>
+            </v-flex>
+        </v-layout>
+        
+        <h3 class="headline mb-0 centeredText">Burschen</h3>
+        <v-divider></v-divider>
+        <v-layout row wrap>
+            <v-flex v-for='item in burschen' :key='item.id' xs12 md3>
+                <aktiv-card
+                    :name = 'item.name'
+                    :description = 'item.desc'
+                    :image = 'item.picture'
+                    :title = 'item.title'
+                ></aktiv-card>
+            </v-flex>
+        </v-layout>
+
+        <h3 class="headline mb-0 centeredText">Füchse</h3>
+        <v-divider></v-divider>
+        <v-layout row wrap>
+            <v-flex v-for='item in fuxen' :key='item.id' xs12 md3>
+                <aktiv-card
+                    :name = 'item.name'
+                    :description = 'item.desc'
+                    :image = 'item.picture'
+                    :title = 'item.title'
                 ></aktiv-card>
             </v-flex>
         </v-layout>
@@ -18,20 +46,51 @@ import {axiosConfig} from '../../main.js'
 import AktivCard from '@/components/aktiv/AktivCard'
 export default {
     data:() => ({
-        items: []
+        vorstand: [],
+        nvorstand: [],
+        burschen: [],
+        nburschen: [],
+        fuxen: [],
+        nfuxen: [],
+        show: false
     }),
     created() {
-        axiosConfig.get('/profile_test')
+        axiosConfig.get('/vorstand')
         .then(response => {
-            let i = 0
-            this.names = Object.keys(response.data.modular_content)
-            for(i=0;i<this.names.length;i++){
-                this.items.push({
-                    name: response.data.modular_content[this.names[i]].elements.profile_name.value.slice(3,-4),
-                    description: response.data.modular_content[this.names[i]].elements.profile_description.value.slice(3,-4),
-                    image: response.data.modular_content[this.names[i]].elements.profile_picture.value[0].url
+            this.nvorstand = Object.keys(response.data.modular_content)
+            for (let i = 0; i<this.nvorstand.length;i++){
+                this.vorstand.push({
+                    title: response.data.modular_content[this.nvorstand[i]].elements.title.value,
+                    name: response.data.modular_content[this.nvorstand[i]].elements.name.value,
+                    desc: response.data.modular_content[this.nvorstand[i]].elements.desc.value,
+                    picture: response.data.modular_content[this.nvorstand[i]].elements.picture.value[0].url,
                 })
             }
+        }),
+        axiosConfig.get('/burschen')
+        .then(response => {
+            this.nburschen = Object.keys(response.data.modular_content)
+            for (let i = 0; i<this.nburschen.length;i++){
+                this.burschen.push({
+                    title: response.data.modular_content[this.nburschen[i]].elements.title.value,
+                    name: response.data.modular_content[this.nburschen[i]].elements.name.value,
+                    desc: response.data.modular_content[this.nburschen[i]].elements.desc.value,
+                    picture: response.data.modular_content[this.nburschen[i]].elements.picture.value[0].url,
+                })
+            }
+        }),
+        axiosConfig.get('/fuxen')
+        .then(response => {
+            this.nfuxen = Object.keys(response.data.modular_content)
+            for (let i = 0; i<this.nfuxen.length;i++){
+                this.fuxen.push({
+                    title: response.data.modular_content[this.nfuxen[i]].elements.title.value,
+                    name: response.data.modular_content[this.nfuxen[i]].elements.name.value,
+                    desc: response.data.modular_content[this.nfuxen[i]].elements.desc.value,
+                    picture: response.data.modular_content[this.nfuxen[i]].elements.picture.value[0].url,
+                })
+            }
+            console.log(this.fuxen)
         })
     },
     components: {

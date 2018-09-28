@@ -1,36 +1,33 @@
 <template>
-  <v-hover>
-    <v-card
-      slot-scope="{ hover }"
-      class="mx-auto"
-      color="grey lighten-4"
-      max-width="600"
-    >
-      <v-img
-        :aspect-ratio="4/3"
-        :src=image
-      >
-        <v-expand-transition>
-          <div
-            v-if="hover"
-            class="d-flex transition-fast-in-fast-out green darken-2 v-card--reveal display-1 white--text"
-            style="height: 100%;"
-          >
-            {{name}} <br>
-            1 Sprecher<br>
-            {{description}}
-          </div>
-        </v-expand-transition>
-      </v-img>
-      
-    </v-card>
-  </v-hover>
+  <v-card class="elevation-1 transparent">
+    <v-img
+    :src=image
+    aspect-ratio="0.9"
+    ></v-img>
+    <v-card-actions>
+        <v-card-text class="font-weight-black">{{this.title}}</v-card-text>
+        <v-spacer></v-spacer>
+        <v-btn icon @click="show = !show">
+            <v-icon>{{ show ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</v-icon>
+        </v-btn>
+    </v-card-actions>
+
+    <v-slide-y-transition>
+    <v-card-text v-show="show">
+        {{ this.name}}<br>
+        {{this.description}}
+    </v-card-text>
+    </v-slide-y-transition>
+  </v-card>
+
 </template>
 
 <script>
     export default{
         name: 'AktivCard',
-        data: () => ({}),
+        data: () => ({
+          show:false
+        }),
         props: {
             image: {
                 type: String
@@ -40,6 +37,9 @@
             },
             description: {
                 type: String
+            },
+            title: {
+              type: String
             }
         }
 

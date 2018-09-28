@@ -6,14 +6,10 @@ import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import axios from 'axios'
-import * as VueGoogleMaps from 'vue2-google-maps'
+import {store} from './store'
 
 Vue.use(Vuetify, axios)
-Vue.use(VueGoogleMaps, {
-  load: {
-    key: 'AIzaSyBPovR1Mt1Jz9BffG_Snz790ljYBL-fADw',
-  }
-})
+
 
 export const axiosConfig = axios.create({
   baseURL:'https://deliver.kenticocloud.com/8ea21de5-9b35-00db-c1c1-52597ac64a72/items'
@@ -24,6 +20,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
