@@ -12,16 +12,16 @@
                         <v-flex xs12>
                             <v-card class="elevation-0 transparent">
                                 <v-card-title primary-title class="layout justify-center">
-                                <div class="headline text-xs-center">{{this.title}} </div>
+                                <div class="headline text-xs-center">{{title}} </div>
                                 </v-card-title>
                                 <v-card-text>
-                                    {{this.desc1}}
+                                    {{desc1}}
                                 </v-card-text>
                                 <v-card-text>
-                                    {{this.desc2}}
+                                    {{desc2}}
                                 </v-card-text>
                                 <v-card-text>
-                                    {{this.desc3}}
+                                    {{desc3}}
                                 </v-card-text>
                             </v-card>
                             </v-flex>
@@ -44,27 +44,26 @@
   import {axiosConfig} from '../../main.js'
   export default {
     data: () => ({
-        pictures: [],
-        title: '',
-        desc1: '',
-        desc2: '',
-        desc3: '',
-        names: []
     }),
     created () {
-        axiosConfig.get('/heimpage')
-        .then(response => {
-            this.title = response.data.item.elements.title.value
-            this.desc1 = response.data.item.elements.desc1.value.slice(3,-4)
-            this.desc2 = response.data.item.elements.desc2.value.slice(3,-4)
-            this.desc3 = response.data.item.elements.desc3.value.slice(3,-4)
-            this.names = Object.keys(response.data.modular_content)
-            for(let i = 0; i<this.names.length;i++){
-                this.pictures.push({
-                    src:response.data.modular_content[this.names[i]].elements.picture.value[0].url
-                })
-            }
-        })
+        this.$store.dispatch('getHeimPage')
+    },
+    computed: {
+        title(){
+            return this.$store.getters.heimPage.title
+        },
+        desc1(){
+            return this.$store.getters.heimPage.desc1
+        },
+        desc2(){
+            return this.$store.getters.heimPage.desc2
+        },
+        desc3(){
+            return this.$store.getters.heimPage.desc3
+        },
+        pictures(){
+            return this.$store.getters.heimPage.pictures
+        }
     }
   }
 </script>

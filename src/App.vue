@@ -114,7 +114,7 @@
             Fono: +56 2 2716 8917<br>
             Email: andiniachile@gmail.com<br>
             <v-btn icon>
-              <v-icon>info</v-icon>
+              <v-icon color="blue">fab fa-facebook</v-icon>
             </v-btn>
           </v-card-text>
       </v-card>

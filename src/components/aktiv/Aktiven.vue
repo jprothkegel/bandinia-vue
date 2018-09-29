@@ -46,52 +46,21 @@ import {axiosConfig} from '../../main.js'
 import AktivCard from '@/components/aktiv/AktivCard'
 export default {
     data:() => ({
-        vorstand: [],
-        nvorstand: [],
-        burschen: [],
-        nburschen: [],
-        fuxen: [],
-        nfuxen: [],
         show: false
     }),
     created() {
-        axiosConfig.get('/vorstand')
-        .then(response => {
-            this.nvorstand = Object.keys(response.data.modular_content)
-            for (let i = 0; i<this.nvorstand.length;i++){
-                this.vorstand.push({
-                    title: response.data.modular_content[this.nvorstand[i]].elements.title.value,
-                    name: response.data.modular_content[this.nvorstand[i]].elements.name.value,
-                    desc: response.data.modular_content[this.nvorstand[i]].elements.desc.value,
-                    picture: response.data.modular_content[this.nvorstand[i]].elements.picture.value[0].url,
-                })
-            }
-        }),
-        axiosConfig.get('/burschen')
-        .then(response => {
-            this.nburschen = Object.keys(response.data.modular_content)
-            for (let i = 0; i<this.nburschen.length;i++){
-                this.burschen.push({
-                    title: response.data.modular_content[this.nburschen[i]].elements.title.value,
-                    name: response.data.modular_content[this.nburschen[i]].elements.name.value,
-                    desc: response.data.modular_content[this.nburschen[i]].elements.desc.value,
-                    picture: response.data.modular_content[this.nburschen[i]].elements.picture.value[0].url,
-                })
-            }
-        }),
-        axiosConfig.get('/fuxen')
-        .then(response => {
-            this.nfuxen = Object.keys(response.data.modular_content)
-            for (let i = 0; i<this.nfuxen.length;i++){
-                this.fuxen.push({
-                    title: response.data.modular_content[this.nfuxen[i]].elements.title.value,
-                    name: response.data.modular_content[this.nfuxen[i]].elements.name.value,
-                    desc: response.data.modular_content[this.nfuxen[i]].elements.desc.value,
-                    picture: response.data.modular_content[this.nfuxen[i]].elements.picture.value[0].url,
-                })
-            }
-            console.log(this.fuxen)
-        })
+        this.$store.dispatch('getAktiven')
+    },
+    computed: {
+        vorstand(){
+            return this.$store.getters.aktiven.vorstand
+        },
+        burschen(){
+            return this.$store.getters.aktiven.burschen
+        },
+        fuxen(){
+            return this.$store.getters.aktiven.fuxen
+        }
     },
     components: {
         AktivCard

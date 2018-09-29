@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import {axiosConfig} from '../../main.js'
+
 export default {
     data:() => ({
     }),

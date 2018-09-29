@@ -72,25 +72,29 @@
 import {axiosConfig} from '../../main.js'
 export default {
     data:() => ({
-        title:'',
-        desc1: '',
-        desc2: '',
-        desc3: '',
-        desc4: '',
-        desc5: '',
-        picture: ''
-
     }),
     created() {
-        axiosConfig.get('/whowearepage')
-        .then(response => {
-            this.title = response.data.item.elements.title.value
-            this.desc1 = response.data.item.elements.description1.value.slice(3,-4)
-            this.desc2 = response.data.item.elements.description2.value.slice(3,-4)
-            this.desc3 = response.data.item.elements.description3.value.slice(3,-4)
-            this.desc4 = response.data.item.elements.description4.value.slice(3,-4)
-            this.desc5 = response.data.item.elements.description5.value.slice(3,-4)
-        })
+        this.$store.dispatch('getQS')
+    },
+    computed: {
+        title(){
+            return this.$store.getters.qs.title
+        },
+        desc1(){
+            return this.$store.getters.qs.desc1
+        },
+        desc2(){
+            return this.$store.getters.qs.desc2
+        },
+        desc3(){
+            return this.$store.getters.qs.desc3
+        },
+        desc4(){
+            return this.$store.getters.qs.desc4
+        },
+        desc5(){
+            return this.$store.getters.qs.desc5
+        },
     }
 }
 </script>

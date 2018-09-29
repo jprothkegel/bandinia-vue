@@ -1,6 +1,6 @@
 <template>
     <v-flex>
-        <h3 class="headline mb-0 centeredText">{{this.title}} </h3>
+        <h3 class="headline mb-0 centeredText">{{title}} </h3>
         <v-layout
           row
           wrap
@@ -30,26 +30,20 @@ import {axiosConfig} from '../../main.js'
 export default {
     data:()=>({
         show: false,
-        names: [],
-        cards: [],
-        title: ''
     }),
     components: {
         Historia
     },
     created() {
-        axiosConfig.get('/historypage')
-        .then(response => {
-            this.title = response.data.item.elements.title.value
-            this.names = Object.keys(response.data.modular_content)
-            for(let i = 0; i < this.names.length; i++){
-                this.cards.push({
-                    image: response.data.modular_content[this.names[i]].elements.image.value[0].url,
-                    title: response.data.modular_content[this.names[i]].elements.title.value,
-                    description: response.data.modular_content[this.names[i]].elements.description.value.slice(3,-4)
-                })
-            }
-        })
+        this.$store.dispatch('getHistories')
+    },
+    computed: {
+        title(){
+            return this.$store.getters.historias.title
+        },
+        cards(){
+            return this.$store.getters.historias.cards
+        }
     }
 }
 </script>

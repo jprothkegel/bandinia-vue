@@ -14,27 +14,34 @@ export default new Router({
     {
       path: '/',
       name: 'HomePage',
-      component: HomePage
+      component: HomePage,
+      meta: {
+        title: 'Burschenschaft Andinia zu Santiago'
+      }
     },
     {
       path: '/aktiven',
       name: 'Aktiven',
-      component: Aktiven
+      component: Aktiven,
+      meta: {title: 'Burschenschaft Andinia zu Santiago'}
     },
     {
       path: '/qs',
       name: 'QuienesSomos',
-      component: QuienesSomos
+      component: QuienesSomos,
+      meta: {title: 'Burschenschaft Andinia zu Santiago'}
     },
     {
       path: '/historia',
       name: 'Historias',
-      component: Historias
+      component: Historias,
+      meta: {title: 'Burschenschaft Andinia zu Santiago'}
     },
     {
       path: '/hogar',
       name: 'Hogar',
-      component: Hogar
+      component: Hogar,
+      meta: {title: 'Burschenschaft Andinia zu Santiago'}
     }
   ],
   mode: 'history'
