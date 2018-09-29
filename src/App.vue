@@ -77,6 +77,9 @@
         <v-btn small flat>
           Galeria
         </v-btn>
+        <v-btn @click="setLanguage()" flat icon color="green">
+              <v-icon>outlined_flag</v-icon>
+            </v-btn>
       </v-toolbar-items>
       <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
 
@@ -150,10 +153,16 @@
 </script>
 <script>
 export default {
-      data: () => ({
+    data: () => ({
       dialog: false,
       drawer: null
     }),
+    methods: {
+      setLanguage(){
+        this.$store.dispatch('setLanguage')
+        console.log(this.$store.state)
+      }
+    },
   name: 'App'
 }
 </script>

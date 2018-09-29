@@ -1,5 +1,7 @@
 <template>
     <v-flex>
+        <v-progress-circular v-if="this.$store.getters.loading" class="progress" indeterminate :size="70" :width="7" color="indigo"></v-progress-circular>
+
         <v-parallax
             dark
             :src="require('../../assets/Andinia.png')"
@@ -10,11 +12,10 @@
             column
             justify-center
             >
-            <h1 class="display-3 font-weight-thin mb-3">{{this.pageTitle}} </h1>
-            <h4 class="headline">{{this.pageSubtitle}} </h4>
+            <h1 class="display-3 font-weight-thin mb-3">{{pageTitle}} </h1>
+            <h4 class="headline">{{pageSubtitle}} </h4>
             </v-layout>
         </v-parallax>
-
         <v-layout
           column
           wrap
@@ -51,28 +52,20 @@
 import {axiosConfig} from '../../main.js'
 export default {
     data:() => ({
-        pageTitle: '',
-        pageSubtitle: '',
-        cards: [],
-        names: [],
-        cardQuantity: 0
-
     }),
-    created() {
-        axiosConfig.get('/homepage')
-        .then(response => {
-          this.pageTitle = response.data.item.elements.title.value
-          this.pageSubtitle = response.data.item.elements.subtitle.value.slice(3,-4)
-          this.cardQuantity = response.data.item.elements.cards.value.length
-          this.names = Object.keys(response.data.modular_content)
-          for(let i=0; i < this.cardQuantity; i++){
-            this.cards.push({
-                icon: response.data.modular_content[this.names[i]].elements.icon.value,
-                title: response.data.modular_content[this.names[i]].elements.title.value,
-                description: response.data.modular_content[this.names[i]].elements.description.value.slice(3,-4)
-            })
-          }
-        })
+    created(){
+      this.$store.dispatch('getHomePage')
+    },
+    computed: {
+      pageTitle (){
+        return this.$store.getters.homePage.pageTitle
+      },
+      pageSubtitle (){
+        return this.$store.getters.homePage.pageSubTitle
+      },
+      cards (){
+        return this.$store.getters.homePage.cards
+      }
     }
 }
 </script>
