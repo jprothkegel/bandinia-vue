@@ -62,21 +62,41 @@
       
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn to="/qs" active-class small flat>
+        <v-btn to="/qs" active-class small flat v-if="this.$store.getters.lang === 'es' ">
           Quienes Somos
         </v-btn>
-        <v-btn to="/historia" active-class small flat>
+        <v-btn to="/qs" active-class small flat v-if="this.$store.getters.lang === 'de' ">
+          Wer sind wir
+        </v-btn>
+
+        <v-btn to="/historia" active-class small flat v-if="this.$store.getters.lang === 'es' ">
           Historia
         </v-btn>
-        <v-btn to="/hogar" active-class small flat>
+        <v-btn to="/historia" active-class small flat v-if="this.$store.getters.lang === 'de' ">
+          Geschichte
+        </v-btn>
+
+        <v-btn to="/hogar" active-class small flat v-if="this.$store.getters.lang === 'es' ">
           Nuestro Hogar
         </v-btn>
-        <v-btn to="/aktiven" active-class small flat>
+        <v-btn to="/hogar" active-class small flat v-if="this.$store.getters.lang === 'de' ">
+          Unser Heim
+        </v-btn>
+
+        <v-btn to="/aktiven" active-class small flat v-if="this.$store.getters.lang === 'es' ">
           Activos
         </v-btn>
-        <v-btn small flat>
+        <v-btn to="/aktiven" active-class small flat v-if="this.$store.getters.lang === 'de' ">
+          Aktiven
+        </v-btn>
+
+        <v-btn active-class small flat v-if="this.$store.getters.lang === 'es' ">
           Galeria
         </v-btn>
+        <v-btn active-class small flat v-if="this.$store.getters.lang === 'de' ">
+          Galerie
+        </v-btn>
+
         <v-btn @click="setLanguage()" flat icon color="green">
               <v-icon>outlined_flag</v-icon>
             </v-btn>
@@ -160,7 +180,11 @@ export default {
     methods: {
       setLanguage(){
         this.$store.dispatch('setLanguage')
-        console.log(this.$store.state)
+        this.$store.dispatch('getQS')
+        this.$store.dispatch('getHomePage')
+        this.$store.dispatch('getHistories')
+        this.$store.dispatch('getHeimPage')
+        this.$store.dispatch('getAktiven')
       }
     },
   name: 'App'
