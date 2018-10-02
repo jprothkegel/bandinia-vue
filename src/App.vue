@@ -9,34 +9,53 @@
       right
     >
       <v-list dense>
-        <v-subheader>Menú</v-subheader>
+        <v-subheader>Menú
+          <v-btn @click="setLanguage()" flat small round color="green">
+            <v-icon>outlined_flag</v-icon>
+          </v-btn>
+        </v-subheader>
         <v-list-tile :to="{name:'QuienesSomos'}">
-          <v-list-tile-content>
+          <v-list-tile-content v-if="this.$store.getters.lang === 'es'">
             Quienes Somos
+          </v-list-tile-content>
+          <v-list-tile-content v-if="this.$store.getters.lang === 'de'">
+            Wer sind wir
           </v-list-tile-content>
         </v-list-tile>
 
         <v-list-tile :to="{name:'Historias'}">
-          <v-list-tile-content>
+          <v-list-tile-content v-if="this.$store.getters.lang === 'es'">
             Historia
+          </v-list-tile-content>
+          <v-list-tile-content v-if="this.$store.getters.lang === 'de'">
+            Geschichte
           </v-list-tile-content>
         </v-list-tile>
         
       <v-list-tile :to="{name:'Hogar'}">
-          <v-list-tile-content>
+          <v-list-tile-content v-if="this.$store.getters.lang === 'es'">
             Nuestro Hogar
+          </v-list-tile-content>
+          <v-list-tile-content v-if="this.$store.getters.lang === 'de'">
+            Unser Heim
           </v-list-tile-content>
         </v-list-tile>
 
       <v-list-tile :to="{name:'Aktiven'}">
-          <v-list-tile-content>
+          <v-list-tile-content v-if="this.$store.getters.lang === 'es'">
             Activos
+          </v-list-tile-content>
+          <v-list-tile-content v-if="this.$store.getters.lang === 'de'">
+            Aktiven
           </v-list-tile-content>
         </v-list-tile>
 
       <v-list-tile>
-          <v-list-tile-content>
+          <v-list-tile-content v-if="this.$store.getters.lang === 'es'">
             Galeria
+          </v-list-tile-content>
+          <v-list-tile-content v-if="this.$store.getters.lang === 'de'">
+            Galerie
           </v-list-tile-content>
         </v-list-tile>
 
