@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
-        lang: 'es',
+        lang: 'de',
         loading: false,
         homePage: [],
         heimPage: [],

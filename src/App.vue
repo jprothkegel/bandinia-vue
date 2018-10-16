@@ -152,7 +152,7 @@
             Estamos ubicados en Bustos 2044, Providencia, a pasos de la calle Pedro de Valdivia<br>
             Fono: +56 2 2716 8917<br>
             Email: andiniachile@gmail.com<br>
-            <v-btn icon>
+            <v-btn href="https://www.facebook.com/Burschenschaft-Andinia-1426177757647897/" icon>
               <v-icon color="blue">fab fa-facebook</v-icon>
             </v-btn>
           </v-card-text>
