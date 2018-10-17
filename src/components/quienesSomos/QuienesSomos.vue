@@ -31,6 +31,7 @@
         </v-layout>
 
         <v-parallax 
+        height="875"
         :src="require('../../assets/qs1.jpeg')"
         >
             <v-layout

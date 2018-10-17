@@ -29,14 +29,15 @@
                 </v-container>
             </v-flex>
         </v-layout>
-
-        <v-carousel>
-            <v-carousel-item
-            v-for="(picture,i) in pictures"
-            :key="i"
-            :src="picture.src"
-            ></v-carousel-item>
-        </v-carousel>
+        <v-flex >
+            <v-carousel :style="{'height':'800px'}">
+                <v-carousel-item
+                v-for="(picture,i) in pictures"
+                :key="i"
+                :src="picture.src"
+                ></v-carousel-item>
+            </v-carousel>
+        </v-flex>
     </v-flex>
 </template>
 
@@ -67,3 +68,5 @@
     }
   }
 </script>
+
+
