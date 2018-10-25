@@ -6,6 +6,8 @@ import HomePage from '@/components/homePage/HomePage'
 import QuienesSomos from '@/components/quienesSomos/QuienesSomos'
 import Historias from '@/components/historia/Historias'
 import Hogar from '@/components/hogar/Hogar'
+import Galleries from '@/components/gallery/Galleries'
+import { globalAgent } from 'https';
 
 Vue.use(Router)
 
@@ -41,6 +43,12 @@ export default new Router({
       path: '/hogar',
       name: 'Hogar',
       component: Hogar,
+      meta: {title: 'Burschenschaft Andinia zu Santiago'}
+    },
+    {
+      path: '/galeria',
+      name: 'Galleries',
+      component: Galleries,
       meta: {title: 'Burschenschaft Andinia zu Santiago'}
     }
   ],

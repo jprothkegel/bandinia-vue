@@ -12,7 +12,8 @@ export const store = new Vuex.Store({
         heimPage: [],
         qs: [],
         aktiven: [],
-        historias: []
+        historias: [],
+        galleries: []
     },
     mutations: {
         setLang (state){
@@ -40,6 +41,9 @@ export const store = new Vuex.Store({
         },
         setAktiven (state, payload) {
             state.aktiven = payload
+        },
+        setGalleries (state, payload) {
+            state.galleries = payload
         }
     },
     actions: {
@@ -51,10 +55,10 @@ export const store = new Vuex.Store({
             axiosConfig.get('/homepage')
             .then(response => {
                 var lang = getters.lang
-                let pageTitleIn, pageSubTitleIn, names, cardQuantity
+                let pageTitleIn, pageSubTitleIn, names, cardQuantity,image
                 var homePages = {}
                 var cards = []
-
+                image = response.data.item.elements.image.value[0].url
                 if(lang === 'es'){
                     pageTitleIn = response.data.item.elements.title.value
                     pageSubTitleIn = response.data.item.elements.subtitle.value.slice(3,-4)
@@ -86,6 +90,7 @@ export const store = new Vuex.Store({
                 homePages['pageTitle'] = pageTitleIn
                 homePages['pageSubTitle'] = pageSubTitleIn
                 homePages['cards'] = cards
+                homePages['image'] = image
                 commit('setHomePage', homePages)
                 commit('setLoading', false)
             }) 
@@ -176,8 +181,9 @@ export const store = new Vuex.Store({
             axiosConfig.get('/whowearepage')
             .then(response => {
                 var lang = getters.lang
-                let title, desc1, desc2, desc3, desc4, desc5
+                let title, desc1, desc2, desc3, desc4, desc
                 var qs = {}
+                qs['image'] = response.data.item.elements.image.value[0].url
                 if(lang == 'es'){
                     qs['title'] = response.data.item.elements.title.value
                     qs['desc1'] = response.data.item.elements.description1.value.slice(3,-4)
@@ -296,6 +302,34 @@ export const store = new Vuex.Store({
             aktiven['fuxen'] = fuxen
             commit('setAktiven', aktiven)
             commit('setLoading', false)
+        },
+        getGalleries ({commit, getters}){
+            commit('setLoading', true)
+            var names
+            var galleries = []
+            var pictures = []
+            axiosConfig.get('/galleries')
+            .then(response => {
+                names = Object.keys(response.data.modular_content)
+                for (let i=0; i<names.length;i++){
+                    for(let j=0; j<response.data.modular_content[names[i]].elements.pictures.value.length; j++){
+                        pictures.push(
+                            response.data.modular_content[names[i]].elements.pictures.value[j].url
+                        )
+                    }
+                    galleries.push({
+                        title: response.data.modular_content[names[i]].elements.title.value,
+                        pictures: pictures
+                    })
+                    console.log(pictures)
+                    pictures = []
+                }
+                commit('setGalleries', galleries)
+                commit('setLoading', false)
+                console.log(response.data.modular_content.gallery_0_1_4d43a19.elements.pictures.value.length)
+                console.log(galleries)
+                
+            })
         }
     },
     getters: {
@@ -319,6 +353,9 @@ export const store = new Vuex.Store({
         },
         aktiven(state){
             return state.aktiven
+        },
+        galleries(state){
+            return state.galleries
         }
     }
 })

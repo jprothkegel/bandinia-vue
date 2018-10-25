@@ -50,7 +50,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
-      <v-list-tile>
+      <v-list-tile :to="{name: 'Galleries'}">
           <v-list-tile-content v-if="this.$store.getters.lang === 'es'">
             Galeria
           </v-list-tile-content>
@@ -109,10 +109,10 @@
           Aktiven
         </v-btn>
 
-        <v-btn active-class small flat v-if="this.$store.getters.lang === 'es' ">
+        <v-btn to="/galeria" active-class small flat v-if="this.$store.getters.lang === 'es' ">
           Galeria
         </v-btn>
-        <v-btn active-class small flat v-if="this.$store.getters.lang === 'de' ">
+        <v-btn to="/galeria" active-class small flat v-if="this.$store.getters.lang === 'de' ">
           Galerie
         </v-btn>
 

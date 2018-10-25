@@ -30,18 +30,8 @@
             </v-flex>
         </v-layout>
 
-        <v-parallax 
-        height="875"
-        :src="require('../../assets/qs1.jpeg')"
-        >
-            <v-layout
-            align-center
-            column
-            justify-center
-            >
-            </v-layout>
-        </v-parallax>
-
+        <v-img :src=image aspect-ratio="1.8" class="elevation-5"></v-img>
+       
         <v-layout
         column
         wrap
@@ -96,6 +86,9 @@ export default {
         desc5(){
             return this.$store.getters.qs.desc5
         },
+        image(){
+            return this.$store.getters.qs.image
+        }
     }
 }
 </script>

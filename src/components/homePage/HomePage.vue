@@ -2,27 +2,23 @@
     <v-flex>
         <v-progress-circular v-if="this.$store.getters.loading" class="progress" indeterminate :size="70" :width="7" color="indigo"></v-progress-circular>
 
-        <v-parallax
-            dark
-            :src="require('../../assets/Andinia.png')"
-            height="770"
-        >
-            <v-layout
+        <v-img :src=image aspect-ratio="2.2" class="elevation-5">
+          <v-layout
             align-center
             column
             justify-center
-            >
-            <h1 class="display-3 font-weight-thin mb-3">{{pageTitle}} </h1>
-            <h4 class="headline">{{pageSubtitle}} </h4>
-            </v-layout>
-        </v-parallax>
+          >
+          <h1 class="display-3 font-weight-thin mb-3 white--text" style="padding-top:15%;">{{pageTitle}} </h1>
+          <h4 class="headline white--text">{{pageSubtitle}} </h4>
+          </v-layout>
+        </v-img>
+    
         <v-layout
           column
           wrap
           class="my-5"
           align-center
         >
-          
           <v-flex xs12>
             <v-container grid-list-xl>
               <v-layout row wrap align-center>
@@ -65,6 +61,9 @@ export default {
       },
       cards (){
         return this.$store.getters.homePage.cards
+      },
+      image (){
+        return this.$store.getters.homePage.image
       }
     }
 }
