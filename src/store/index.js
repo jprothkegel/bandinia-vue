@@ -106,6 +106,7 @@ export const store = new Vuex.Store({
             .then(response => {
                 let title, desc1, desc2, desc3, names
                 var pictures = []
+                var images = []
 
                 if(lang === 'es'){
                     title = response.data.item.elements.title.value
@@ -119,13 +120,9 @@ export const store = new Vuex.Store({
                     desc2 = response.data.item.elements.de_desc2.value.slice(3,-4)
                     desc3 = response.data.item.elements.de_desc3.value.slice(3,-4)
                 }
-                names = Object.keys(response.data.modular_content)
-                for (let i = 0; i<names.length;i++){
-                    pictures.push({
-                        src: response.data.modular_content[names[i]].elements.picture.value[0].url
-                    })
+                for(let j = 0; j<response.data.item.elements.images.value.length;j++){
+                    pictures.push({src:response.data.item.elements.images.value[j].url})
                 }
-                
                 var heimPage ={}
                 heimPage['title'] = title
                 heimPage['desc1'] = desc1
@@ -321,14 +318,10 @@ export const store = new Vuex.Store({
                         title: response.data.modular_content[names[i]].elements.title.value,
                         pictures: pictures
                     })
-                    console.log(pictures)
                     pictures = []
                 }
                 commit('setGalleries', galleries)
                 commit('setLoading', false)
-                console.log(response.data.modular_content.gallery_0_1_4d43a19.elements.pictures.value.length)
-                console.log(galleries)
-                
             })
         }
     },
