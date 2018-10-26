@@ -4,7 +4,7 @@
         <h3 class="headline mb-0 centeredText">{{this.title}}</h3>
     </v-card-title>
 
-    <v-carousel>
+    <v-carousel :style="{'height':'800px'}">
         <v-carousel-item
         v-for="(picture,i) in pictures"
         :key="i"
