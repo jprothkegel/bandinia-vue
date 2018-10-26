@@ -26,7 +26,7 @@
             </v-flex>
         </v-layout>
 
-        <h3 class="headline mb-0 centeredText">Füchse</h3>
+        <h3 class="headline mb-0 centeredText">Fuchsen</h3>
         <v-divider></v-divider>
         <v-layout row wrap>
             <v-flex v-for='item in fuxen' :key='item.id' xs12 md3>
